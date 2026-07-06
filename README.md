@@ -15,8 +15,8 @@ Este proyecto ha sido estructurado como una aplicación **híbrida (Web y Móvil
 ## 👥 Creadores del Proyecto
 
 Este ecosistema ha sido diseñado y desarrollado con dedicación por:
-*   **[Tu Nombre / Tu Nombre de Usuario]** - *Desarrollo de Software y Arquitectura Web/Móvil* ([@TuGitHub](https://github.com/TuUsuario))
-*   **[Nombre de tu Socio/Colaborador]** - *Diseño de Experiencia de Usuario (UX/UI) y Control de Calidad* ([@SocioGitHub](https://github.com/SocioUsuario))
+*   **[Team Shrew / Shrew Platforms]** - *Desarrollo de Software y Arquitectura Web/Móvil* ([@TuGitHub](https://github.com/TuUsuario))
+*   **[Marc Don/Team Shrew]** - *Diseño de Experiencia de Usuario (UX/UI) y Control de Calidad* ([@SocioGitHub](https://github.com/SocioUsuario))
 
 *¿Quieres colaborar? ¡Revisa nuestra sección de contribuciones al final de este documento!*
 

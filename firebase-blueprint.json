@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile in Shrew",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "avatarColor": { "type": "string" },
+        "avatarIcon": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "statusText": { "type": "string" },
+        "status": { "type": "string", "enum": ["online", "idle", "dnd", "offline"] },
+        "joinedAt": { "type": "integer" }
+      },
+      "required": ["id", "name", "username", "avatarColor", "avatarIcon", "status", "joinedAt"]
+    },
+    "Nest": {
+      "title": "Nest",
+      "description": "A nest or category in Shrew containing text or voice channels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "color": { "type": "string" },
+        "description": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "integer" }
+      },
+      "required": ["id", "name", "icon", "color", "ownerId", "createdAt"]
+    },
+    "Squeak": {
+      "title": "Squeak",
+      "description": "A channel inside a nest",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nestId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["text", "voice"] },
+        "description": { "type": "string" },
+        "createdAt": { "type": "integer" }
+      },
+      "required": ["id", "nestId", "name", "type", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A text message in a squeak channel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nestId": { "type": "string" },
+        "squeakId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderColor": { "type": "string" },
+        "senderAvatar": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "integer" },
+        "reactions": { "type": "object" },
+        "isAi": { "type": "boolean" }
+      },
+      "required": ["id", "nestId", "squeakId", "senderId", "senderName", "senderColor", "senderAvatar", "content", "timestamp"]
+    },
+    "DmChannel": {
+      "title": "DmChannel",
+      "description": "A direct message channel between two users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participants": { "type": "array" },
+        "lastMessageText": { "type": "string" },
+        "lastMessageTimestamp": { "type": "integer" }
+      },
+      "required": ["id", "participants"]
+    },
+    "DmMessage": {
+      "title": "DmMessage",
+      "description": "A message in a direct message channel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "channelId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderAvatar": { "type": "string" },
+        "senderColor": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "integer" }
+      },
+      "required": ["id", "channelId", "senderId", "senderName", "senderAvatar", "senderColor", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "nests/{nestId}": {
+      "schema": "Nest",
+      "description": "Nest categories"
+    },
+    "squeaks/{squeakId}": {
+      "schema": "Squeak",
+      "description": "Squeak channels"
+    },
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Text messages in squeaks"
+    },
+    "dm_channels/{channelId}": {
+      "schema": "DmChannel",
+      "description": "Direct message channels"
+    },
+    "dm_messages/{messageId}": {
+      "schema": "DmMessage",
+      "description": "Direct messages"
+    }
+  }
+}

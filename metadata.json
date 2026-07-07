@@ -1,0 +1,6 @@
+{
+  "name": "Shrew",
+  "description": "Un chat estilo Discord con interfaz móvil Android única, rápida y elegante, centrado en comunidades de alta velocidad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helpers
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if isValidId(userId);
+    }
+
+    // Nests (servers/categories)
+    match /nests/{nestId} {
+      allow read: if true;
+      allow write: if isValidId(nestId);
+    }
+
+    // Squeaks (channels inside nests)
+    match /squeaks/{squeakId} {
+      allow read: if true;
+      allow write: if isValidId(squeakId);
+    }
+
+    // Messages in squeaks
+    match /messages/{messageId} {
+      allow read: if true;
+      allow write: if isValidId(messageId);
+    }
+
+    // DM Channels (conversation metadata)
+    match /dm_channels/{channelId} {
+      allow read: if true;
+      allow write: if isValidId(channelId);
+    }
+
+    // DM Messages (messages between individuals)
+    match /dm_messages/{messageId} {
+      allow read: if true;
+      allow write: if isValidId(messageId);
+    }
+
+    // Mobile sessions tracking
+    match /sessions/{sessionId} {
+      allow read: if true;
+      allow write: if isValidId(sessionId);
+    }
+  }
+}
